@@ -7,6 +7,6 @@
  Tools used: 
 <li> Python | Jupyter Notebook | VS Studio Code for making backend of the web app and interface(basic HTML and css).
   </li>
-  <b>Dataset used: </b> Sentimental Analysis using Twitter data about disasters.
+  <b>Dataset used: </b>The dataset is about tweets realted to disasters.
 
  </li>
