@@ -14,7 +14,6 @@ def home():
 def predict():
 	df= pd.read_csv("train.csv")
 	df.drop(['id', 'keyword', 'location'], axis=1, inplace=True)
-	# Features and Labels
 	X = df['text']
 	y = df['target']
 	
@@ -26,19 +25,15 @@ def predict():
 	#Naive Bayes Classifier
 	from sklearn.naive_bayes import MultinomialNB
 
-	clf = MultinomialNB()
-	clf.fit(X_train,y_train)
-	clf.score(X_test,y_test)
-	'''Alternative Usage of Saved Model
-	 joblib.dump(clf, 'NB_spam_model.pkl')
-	 NB_spam_model = open('NB_spam_model.pkl','rb')
-	 clf = joblib.load(NB_spam_model)
-'''
+	model = MultinomialNB()
+	model.fit(X_train,y_train)
+	model.score(X_test,y_test)
+
 	if request.method == 'POST':
 		message = request.form['message']
 		data = [message]
 		vect = cv.transform(data).toarray()
-		my_prediction = clf.predict(vect)
+		my_prediction = model.predict(vect)
 	return render_template('result.html',prediction = my_prediction)
 
 
